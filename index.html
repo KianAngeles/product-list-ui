@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bake With Love</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lemonada:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lemonada:wght@300;400;700&family=Poppins:wght@400;600&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Bake With Love</h1>
+        </div>
+        <div class="search-container">
+            <input type="text" id="searchBar" placeholder="Search products">
+        </div>
+    </header>
+
+    <main>
+         <!-- Products -->
+        <section class="products">
+            <h2>Products</h2>
+            <div class="product-list">
+                <div class="product-card" onclick="addToCart('Chocolate Cupcake',150,'images/chococupcake.png')">
+                    <div class="product-info">
+                        <h3>Chocolate Cupcake</h3>
+                        <p>Rich chocolate cupcake with frosting</p>
+                        <span class="price">₱150</span>
+                    </div>
+                    <div class="product-image">
+                        <img src="images/chococupcake.png" alt="Chocolate Cupcake">
+                    </div>
+                </div>
+
+                <div class="product-card" onclick="addToCart('Ensaymada',120,'images/ensaymada.png')">
+                    <div class="product-info">
+                        <h3>Ensaymada</h3>
+                        <p>Pillowy bread with butter, cheesee</p>
+                        <span class="price">₱120</span>
+                    </div>
+                    <div class="product-image">
+                        <img src="images/ensaymada.png" alt="Fresh Baguette">
+                    </div>
+                </div>
+
+                <div class="product-card" onclick="addToCart('Mango Cake',140,'images/mangocake.png')">
+                    <div class="product-info">
+                        <h3>Mango Cake</h3>
+                        <p>Juicy mango layers with sponge cake</p>
+                        <span class="price">₱140</span>
+                    </div>
+                    <div class="product-image">
+                        <img src="images/mangocake.png" alt="Butter Croissant">
+                    </div>
+                </div>
+
+                <div class="product-card" onclick="addToCart('Vanilla Layer Cake',450,'images/vanillacake.PNG')">
+                    <div class="product-info">
+                        <h3>Vanilla Layer Cake</h3>
+                        <p>Moist vanilla cake with cream</p>
+                        <span class="price">₱450</span>
+                    </div>
+                    <div class="product-image">
+                        <img src="images/vanillacake.PNG" alt="Vanilla Layer Cake">
+                    </div>
+                </div>
+
+                <div class="product-card" onclick="addToCart('Blueberry Muffin',130,'images/blueberrymuffin.PNG')">
+                    <div class="product-info">
+                        <h3>Blueberry Muffin</h3>
+                        <p>Fresh blueberries in every bite</p>
+                        <span class="price">₱130</span>
+                    </div>
+                    <div class="product-image">
+                        <img src="images/blueberrymuffin.PNG" alt="Blueberry Muffin">
+                    </div>
+                </div>
+
+                <div class="product-card" onclick="addToCart('Creamcheese Bread',350,'images/creambread.png')">
+                    <div class="product-info">
+                        <h3>Creamcheese Bread</h3>
+                        <p>Soft bread with creamy cheese filling</p>
+                        <span class="price">₱350</span>
+                    </div>
+                    <div class="product-image">
+                        <img src="images/creambread.png" alt="Apple Pie">
+                    </div>
+                </div>
+
+                <div class="product-card" onclick="addToCart('Chocolate Chip Cookie',180,'images/chocochipcookie.PNG')">
+                    <div class="product-info">
+                        <h3>Chocolate Chip Cookie</h3>
+                        <p>Loaded with melty chocolate chips</p>
+                        <span class="price">₱180</span>
+                    </div>
+                    <div class="product-image">
+                        <img src="images/chocochipcookie.PNG" alt="Strawberry Tart">
+                    </div>
+                </div>
+
+                <div class="product-card" onclick="addToCart('Chocolate Donut',90,'images/chocodonut.PNG')">
+                    <div class="product-info">
+                        <h3>Chocolate Donut</h3>
+                        <p>Soft donut with chocolate glaze</p>
+                        <span class="price">₱90</span>
+                    </div>
+                    <div class="product-image">
+                        <img src="images/chocodonut.PNG" alt="Chocolate Donut">
+                    </div>
+                </div>
+
+                <div class="product-card" onclick="addToCart('Cheesecake Slice',200,'images/cheesecake.PNG')">
+                    <div class="product-info">
+                        <h3>Cheesecake Slice</h3>
+                        <p>Creamy cheesecake with crust</p>
+                        <span class="price">₱200</span>
+                    </div>
+                    <div class="product-image">
+                        <img src="images/cheesecake.PNG" alt="Cheesecake Slice">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <!-- Cart Info -->
+        <aside class="cart">
+            <h2>Your cart</h2>
+            <div id="cart-items" class="empty-cart">
+                <img src="images/cart.png" alt="Cart Icon">
+                <p>Your Cart is Empty</p>
+            </div>
+
+            <div class="cart-total">
+                <p>Total <span id="total-price">₱0</span></p>
+                <hr>
+                <button id="checkout-btn">Checkout</button>
+            </div>
+        </aside>
+
+    </main>
+
+    <!-- Receipt Confirmation Popup -->
+    <div id="receipt-popup" class="popup-overlay">
+        <div class="popup-content">
+            <h2>Order Receipt</h2>
+            <div id="receipt-details"></div>
+            <p><strong>Total:</strong> <span id="receipt-total"></span></p>
+            <div style="margin-top: 15px;">
+                <button id="confirm-order" style="margin-right: 10px;">Confirm</button>
+                <button id="cancel-order">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Popup -->
+    <div id="checkout-popup" class="popup-overlay">
+        <div class="popup-content">
+            <h2>Thank You for Purchasing! ❤️</h2>
+            <p>Your delicious treats are on their way!</p>
+            <button id="close-popup">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+    <footer>
+        <h2>Bake With Love</h2>
+        <p>Freshly baked treats made daily with passion and care</p>
+        <p>&copy; 2025 Bake With Love. All rights reserved.</p>
+    </footer>
+
+
+</body>
+</html>
